@@ -11,23 +11,28 @@ class Program
 
         if (grade >= 90)
         {
-            Console.WriteLine("You got an A!");
+            string letter = "A";
+            Console.WriteLine($"You got an {letter}!");
         }
         else if (grade >= 80)
         {
-            Console.WriteLine("You got a B!");
+            string letter = "B";
+            Console.WriteLine($"You got an {letter}!");
         }
         else if (grade >= 70)
         {
-            Console.WriteLine("You got a C!");
+            string letter = "C";
+            Console.WriteLine($"You got an {letter}!");
         }
         else if (grade >= 60)
         {
-            Console.WriteLine("You got a D!");
+            string letter = "D";
+            Console.WriteLine($"You got an {letter}!");
         }
-        else 
+        else
         {
-            Console.WriteLine("You got an F!");
+            string letter = "F";
+            Console.WriteLine($"You got an {letter}!");
         }
 
         if (grade >= 60)
