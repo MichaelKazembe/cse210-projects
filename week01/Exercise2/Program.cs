@@ -10,96 +10,43 @@ class Program
 
 
         string letter = "";
-        string positiveSign = "+";
-        string negativeSign = "-";
-        int modulus = 0;
+        string Sign = "";
 
         if (grade >= 90)
         {
             letter = "A";
-            modulus = grade % 10;
-            if (modulus >= 7)
-            {
-                Console.WriteLine($"You got an {letter}{positiveSign}");
-            }
-
-            else if (modulus <= 3)
-            {
-                Console.WriteLine($"You got an {letter}{negativeSign}");
-            }
-
-            else
-            {
-                Console.WriteLine($"You got an {letter}");
-            }
-
         }
-
         else if (grade >= 80)
         {
             letter = "B";
-            modulus = grade % 10;
-            if (modulus >= 7)
-            {
-                Console.WriteLine($"You got an {letter}{positiveSign}");
-            }
-
-            else if (modulus <= 3)
-            {
-                Console.WriteLine($"You got an {letter}{negativeSign}");
-            }
-
-            else
-            {
-                Console.WriteLine($"You got an {letter}");
-            }
         }
-
         else if (grade >= 70)
         {
             letter = "C";
-            modulus = grade % 10;
-            if (modulus >= 7)
-            {
-                Console.WriteLine($"You got an {letter}{positiveSign}");
-            }
-
-            else if (modulus <= 3)
-            {
-                Console.WriteLine($"You got an {letter}{negativeSign}");
-            }
-
-            else
-            {
-                Console.WriteLine($"You got an {letter}");
-            }
         }
-
         else if (grade >= 60)
         {
             letter = "D";
-            modulus = grade % 10;
-            if (modulus >= 7)
-            {
-                Console.WriteLine($"You got an {letter}{positiveSign}");
-            }
-
-            else if (modulus <= 3)
-            {
-                Console.WriteLine($"You got an {letter}{negativeSign}");
-            }
-
-            else
-            {
-                Console.WriteLine($"You got an {letter}");
-            }
         }
-
         else
         {
             letter = "F";
-            Console.WriteLine($"You got an {letter}");
-        }       
+        }
+
+        if (letter != "F")
+        {
+            int modulus = grade % 10;
+            if (modulus >= 7 && letter != "A")
+            {
+                Sign = "+";
+            }
+            else if (modulus <= 3)
+            {
+                Sign = "-";
+            }
+        }
+
+        Console.WriteLine($"Your grade is {letter}{Sign}");
 
         if (grade >= 60)
         {
@@ -110,4 +57,5 @@ class Program
             Console.WriteLine("You failed!");
         }
     }
-}
+
+}   
