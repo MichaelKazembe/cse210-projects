@@ -7,29 +7,37 @@ class Program
         Random randomMagicNumber = new Random();
         int magicNumber = randomMagicNumber.Next(1, 101);
 
-        int guess = -1;
-        int countGuesses = 0;
+        string playAgain = "";
 
-        while (guess != magicNumber )
+        while (playAgain != "no")
         {
-            Console.Write("What is your guess?");
-            guess = int.Parse(Console.ReadLine());
-            countGuesses++;
+            int guess = -1;
+            int countGuesses = 0;
 
-            if ( guess < magicNumber )
+            while (guess != magicNumber )
             {
-                Console.WriteLine("Guess Higher");
-            }
-            else if ( guess > magicNumber )
-            {
-                Console.WriteLine("Guess Lower");
-            }
-            else
-            {
-                Console.WriteLine("You guessed the magic number!"); 
-                Console.WriteLine($"You have guessed {countGuesses} times");
+                Console.Write("What is your guess?");
+                
+                countGuesses++;
+
+                if ( guess < magicNumber )
+                {
+                    Console.WriteLine("Guess Higher");
+                }
+                else if ( guess > magicNumber )
+                {
+                    Console.WriteLine("Guess Lower");
+                }
+                else
+                {
+                    Console.WriteLine("You guessed the magic number!"); 
+                    Console.WriteLine($"You have guessed {countGuesses} times");
+                }
+
             }
 
+            Console.WriteLine("Do you want to play again? (yes/no)");
+            playAgain = Console.ReadLine().ToLower();
         }
     }
 }
