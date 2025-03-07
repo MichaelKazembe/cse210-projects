@@ -8,11 +8,13 @@ class Program
         int magicNumber = randomMagicNumber.Next(1, 101);
 
         int guess = -1;
+        int countGuesses = 0;
 
         while (guess != magicNumber )
         {
             Console.Write("What is your guess?");
             guess = int.Parse(Console.ReadLine());
+            countGuesses++;
 
             if ( guess < magicNumber )
             {
@@ -25,7 +27,9 @@ class Program
             else
             {
                 Console.WriteLine("You guessed the magic number!"); 
+                Console.WriteLine($"You have guessed {countGuesses} times");
             }
+
         }
     }
 }
