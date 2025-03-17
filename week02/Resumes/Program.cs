@@ -25,15 +25,15 @@ class Program
         job2.DisplayJobInformation();
 
         // Create a resume
-        Resume resume = new Resume();
-        resume._name = "Michael T. Kazembe";
+        Resume myResume = new Resume();
+        myResume._name = "Michael T. Kazembe";
 
         // Add jobs to the resume list
-        resume._jobs.Add(job1);
-        resume._jobs.Add(job2);
+        myResume._jobs.Add(job1);
+        myResume._jobs.Add(job2);
 
         // Display resume information
-        resume.DisplayResumeInformation();
+        myResume.DisplayResumeInformation();
         
     }
 }
