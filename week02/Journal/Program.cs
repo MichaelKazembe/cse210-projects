@@ -4,6 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello World! This is the Journal Project.");
+        DisplayMenu menu = new DisplayMenu();
+        menu.Display();
+        
     }
-}
+} 
