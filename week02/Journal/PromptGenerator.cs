@@ -8,22 +8,15 @@ public class PromptGenerator
     // Random prompts List
     List<string> prompts = new List<string>
     {
-        "What is your favorite color?",
-        "What is your favorite food?",
-        "What is your favorite movie?",
-        "What is your favorite song?",
-        "What is your favorite book?",
-        "What is your favorite animal?",
-        "What is your favorite place?",
-        "What is your favorite season?",
-        "What is your favorite memory?",
-        "What is your favorite hobby?",
-        "What is your favorite sport?",
-        "What is your favorite subject?",
-        "What is your favorite game?",
-        "What is your favorite TV show?",
-        "What is your favorite restaurant?",
-        "What is your favorite store?",
+        "Who was the most interesting person I interacted with today?",
+        "What was the best part of my day?",
+        "How did I see the hand of the Lord in my life today?",
+        "What was the strongest emotion I felt today?",
+        "If I had one thing I could do over today, what would it be?",
+        "What is one thing I learned today?",
+        "What is something I am grateful for today?",
+        "What is one goal I want to achieve tomorrow?",
+        "What made me smile today?"
     };
 
     // Choose a random prompt
