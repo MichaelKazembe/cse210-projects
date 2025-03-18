@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 // Stores a list of journal entries
 public class Journal
@@ -19,6 +20,20 @@ public class Journal
         foreach (var entry in _entries)
         {
             Console.WriteLine($"-{entry._entry} (Time Added {entry._time})");
+        }
+    }
+
+    // Save the journal to a file
+    public void SaveToFile()
+    {
+        string fileName = "journal.txt";
+        using(StreamWriter outputFile = new StreamWriter(fileName))
+        { 
+            foreach (var entry in _entries)
+            {
+                outputFile.WriteLine($"{entry._entry} (Time Added {entry._time})");
+            }
+
         }
     }
 }

@@ -54,8 +54,8 @@ class Program
                 case "3":
                     // Save the Journal to a File
                     Console.WriteLine("Saving the journal to a file...");
+                    journal.SaveToFile();
                     Console.WriteLine();
-                    // Add logic for saving the journal
                     break;
 
                 case "4":
