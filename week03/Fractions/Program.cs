@@ -15,5 +15,13 @@ class Program
         // Initialize a fraction to 3/4
         Fraction fraction3 = new Fraction(3, 4);
         Console.WriteLine($"Fraction 3: {fraction3}");
+
+        // Get the top of fraction1
+        fraction1.GetTop();
+        Console.WriteLine($"Fraction 1 top: {fraction1.GetTop()}");
+
+        // Get the bottom of fraction1
+        fraction1.GetBottom();
+        Console.WriteLine($"Fraction 1 bottom: {fraction1.GetBottom()}");
     }
 }
