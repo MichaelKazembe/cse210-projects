@@ -14,6 +14,7 @@ public class Fraction
 
     public Fraction(int wholeNumber) // Constructor initializes to _top/1
     {
+        _top = wholeNumber;
         _bottom = 1;
     }
 
@@ -44,5 +45,18 @@ public class Fraction
     public void SetBottom(int bottom) // Setter for _bottom
     {
         _bottom = bottom;
+    }
+
+    // Methods
+    public string GetFractionString() // Returns a string representation of the fraction
+    {
+        string text = $"{_top}/{_bottom}";
+        return text;
+    }
+    
+    public double GetDecimalValue() // Returns the decimal value of the fraction
+    {
+        double decimalValue = (double)_top / (double)_bottom;
+        return decimalValue;
     }
 }

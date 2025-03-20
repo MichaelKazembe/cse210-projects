@@ -6,30 +6,22 @@ class Program
     {
         // Initialize a fraction to 1/1
         Fraction fraction1 = new Fraction();
-        Console.WriteLine($"Fraction 1: {fraction1}");
+        Console.WriteLine(fraction1.GetFractionString());
+        Console.WriteLine(fraction1.GetDecimalValue());
 
         // Initialize a fraction to 5/1
         Fraction fraction2 = new Fraction(5);
-        Console.WriteLine($"Fraction 2: {fraction2}");
+        Console.WriteLine(fraction2.GetFractionString());
+        Console.WriteLine(fraction2.GetDecimalValue());
 
         // Initialize a fraction to 3/4
         Fraction fraction3 = new Fraction(3, 4);
-        Console.WriteLine($"Fraction 3: {fraction3}");
+        Console.WriteLine(fraction3.GetFractionString());
+        Console.WriteLine(fraction3.GetDecimalValue());
 
-        // Get the top of fraction1
-        fraction1.GetTop();
-        Console.WriteLine($"Fraction 1 top: {fraction1.GetTop()}");
-
-        // Get the bottom of fraction1
-        fraction1.GetBottom();
-        Console.WriteLine($"Fraction 1 bottom: {fraction1.GetBottom()}");
-
-        // Set the top of fraction1 to 2
-        fraction1.SetTop(2);
-        Console.WriteLine($"Fraction 1 top: {fraction1.GetTop()}");
-
-        // Set the bottom of fraction1 to 3
-        fraction1.SetBottom(3);
-        Console.WriteLine($"Fraction 1 bottom: {fraction1.GetBottom()}");
+        // Initialize a fraction to 1/3
+        Fraction fraction4 = new Fraction(1, 3);
+        Console.WriteLine(fraction4.GetFractionString());
+        Console.WriteLine(fraction4.GetDecimalValue());
     }
 }
