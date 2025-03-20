@@ -24,7 +24,7 @@ public class Fraction
     }
 
     // Properties
-    // Setters
+    // Getters
     public int GetTop() // Getter for _top
     {
         return _top;
@@ -33,5 +33,16 @@ public class Fraction
     public int GetBottom() // Getter for _bottom
     {
         return _bottom;
+    }
+
+    // Setters
+    public void SetTop(int top) // Setter for _top
+    {
+        _top = top;
+    }
+
+    public void SetBottom(int bottom) // Setter for _bottom
+    {
+        _bottom = bottom;
     }
 }

@@ -23,5 +23,13 @@ class Program
         // Get the bottom of fraction1
         fraction1.GetBottom();
         Console.WriteLine($"Fraction 1 bottom: {fraction1.GetBottom()}");
+
+        // Set the top of fraction1 to 2
+        fraction1.SetTop(2);
+        Console.WriteLine($"Fraction 1 top: {fraction1.GetTop()}");
+
+        // Set the bottom of fraction1 to 3
+        fraction1.SetBottom(3);
+        Console.WriteLine($"Fraction 1 bottom: {fraction1.GetBottom()}");
     }
 }
