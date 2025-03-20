@@ -22,14 +22,8 @@ public class PromptGenerator
     // Choose a random prompt
     public string GetRandomPrompt()
     {
-        int index = random.Next(prompts.Count);
+        int index = random.Next(prompts.Count); 
         return prompts[index];
     }
 
-    // Display the random prompt
-    public void DisplayPrompt()
-    {
-        string prompt = GetRandomPrompt();
-        Console.WriteLine(prompt);
-    }
 }

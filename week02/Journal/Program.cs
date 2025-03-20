@@ -24,6 +24,7 @@ class Program
 
             // Get the user's choice
             string choice = Console.ReadLine();
+            Console.WriteLine();
 
             // Process the user's choice using a switch statement
             switch (choice)
@@ -31,39 +32,48 @@ class Program
                 case "1":
                     // Display a random prompt
                     PromptGenerator prompt = new PromptGenerator();
-                    prompt.DisplayPrompt();
-
-                    // Add a Journal Entry
+                    string generatedPrompt = prompt.GetRandomPrompt();
+                    Console.WriteLine($"{generatedPrompt}");
+        
+                    // Get the user's journal entry
                     Console.Write("Enter your journal entry: ");
                     string userEntry = Console.ReadLine();
+                    // Record the time the entry was added
+                    string time = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
 
+                    // Create a new Journal Entry
                     JournalEntry journalEntry = new JournalEntry();
-                    journalEntry.AddEntry(userEntry);
+                    journalEntry.Entry(generatedPrompt, userEntry, time);
                     journal.AddEntry(journalEntry);
                     Console.WriteLine("Journal Entry Added!");
+                    journalEntry.DisplayEntry();
                     Console.WriteLine();
                     break;
 
                 case "2":
                     // Display all Journal Entries
+                    Console.WriteLine();
                     Console.WriteLine("Journal Entries:");
-                    journal.DisplayEntries();
+                    journal.DisplayAll();
                     Console.WriteLine();
                     break;
 
                 case "3":
                     // Save the Journal to a File
-                    Console.WriteLine("Saving the journal to a file...");
-                    journal.SaveToFile();
+                    Console.WriteLine("Enter the file name to save the journal to: "); 
+                    string fileName = Console.ReadLine();
+                    journal.SaveToFile(fileName);
                     Console.WriteLine();
                     break;
 
                 case "4":
                     // Load the Journal from a File
-                    Console.WriteLine("Loading the journal from a file...");
+                    Console.WriteLine("Enter the file name to load the journal from: ");
+                    string loadFileName = Console.ReadLine();
+                    journal.LoadFromFile(loadFileName);
+                    Console.WriteLine("Loaded Entries:");
+                    journal.DisplayAll();
                     Console.WriteLine();
-                    // Add logic for loading the journal
-                    journal.LoadFromFile("journal.txt");
                     break;
 
                 case "5":

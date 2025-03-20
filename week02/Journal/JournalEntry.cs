@@ -1,18 +1,26 @@
 using System;
 
-// Represents a journal entry
+// Represents a single journal entry
 public class JournalEntry
 {
-    // Create a new journal entry
     public string _entry = "";
     public string _time = "";
+    public string _prompt = "";
 
-    // Add a new journal entry
-    public void AddEntry(string entry)
+    public void Entry(string prompt, string entry, string time)
     {
-        _entry = entry; // Set the entry to the user's input
-        _time = DateTime.Now.ToString("MM/dd/yyyy"); // Set the time to the current date
+        _prompt = prompt;
+        _entry = entry;
+        _time = time;
     }
-    
+
+    public void DisplayEntry()
+    {
+        Console.WriteLine("Prompt: " + _prompt);
+        Console.WriteLine("Entry: " + _entry);
+        Console.WriteLine("Time: " + _time);
+        Console.WriteLine();
+    }
 }
+
 

@@ -1,58 +1,84 @@
 using System;
 using System.IO;
+using System.Collections.Generic;
 
 // Stores a list of journal entries
 public class Journal
 {
-    // Create a new list of journal entries
-    public List<JournalEntry> _entries = new List<JournalEntry>();
-  
+    // List of journal entries
+    private List<JournalEntry> _entries = new List<JournalEntry>();
 
-    // Add a new journal entry
-    public void AddEntry(JournalEntry _entry)
+    public void AddEntry(JournalEntry newEntry)
     {
-        _entries.Add(_entry);
+       _entries.Add(newEntry);
     }
 
     // Display all journal entries
-    public void DisplayEntries()
+    public void DisplayAll()
     {
-        foreach (var entry in _entries)
+        if (_entries.Count == 0)
         {
-            Console.WriteLine($"-{entry._entry} (Time Added {entry._time})");
+            Console.WriteLine("No entries to display.");
+            return;
+        }
+
+        foreach (JournalEntry entry in _entries)
+        {
+            entry.DisplayEntry();
         }
     }
 
-    // Save the journal to a file
-    public void SaveToFile()
+    // Save journal to a file
+    public void SaveToFile(string file)
     {
-        string fileName = "journal.txt";
-        using(StreamWriter outputFile = new StreamWriter(fileName))
-        { 
-            foreach (var entry in _entries)
+        try
+        {
+            using (StreamWriter writer = new StreamWriter(file))
             {
-                outputFile.WriteLine($"{entry._entry} (Time Added {entry._time})");
+                foreach (JournalEntry entry in _entries)
+                {
+                    writer.WriteLine(entry._prompt);
+                    writer.WriteLine(entry._entry);
+                    writer.WriteLine(entry._time);
+                }
             }
-
+            Console.WriteLine("Journal saved to file.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error saving journal: {ex.Message}");
         }
     }
 
-    // Load the journal from a file
-    public void LoadFromFile(string fileName)
+    // Load journal entries from a file
+    public void LoadFromFile(string file)
     {
-        string[] lines = File.ReadAllLines(fileName);
-
-        foreach (var line in lines)
+        if (!File.Exists(file))
         {
-            string[] parts = line.Split(" (Time Added ");
+            Console.WriteLine("File not found.");
+            return;
+        }
 
-            JournalEntry entry = new JournalEntry();
-            entry._entry = parts[0];
-            entry._time = parts[1].TrimEnd(')');
+        try
+        {
+            _entries.Clear();
 
-            _entries.Add(entry);
-
-            
+            using (StreamReader reader = new StreamReader(file))
+            {
+                while (!reader.EndOfStream)
+                {
+                    JournalEntry entry = new JournalEntry();
+                    entry._prompt = reader.ReadLine();
+                    entry._entry = reader.ReadLine();
+                    entry._time = reader.ReadLine();
+                    _entries.Add(entry);
+                }
+            }
+            Console.WriteLine("Journal loaded from file.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading journal: {ex.Message}");
         }
     }
 }
