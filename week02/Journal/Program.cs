@@ -63,6 +63,7 @@ class Program
                     Console.WriteLine("Loading the journal from a file...");
                     Console.WriteLine();
                     // Add logic for loading the journal
+                    journal.LoadFromFile("journal.txt");
                     break;
 
                 case "5":

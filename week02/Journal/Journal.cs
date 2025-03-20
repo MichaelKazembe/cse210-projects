@@ -36,4 +36,23 @@ public class Journal
 
         }
     }
+
+    // Load the journal from a file
+    public void LoadFromFile(string fileName)
+    {
+        string[] lines = File.ReadAllLines(fileName);
+
+        foreach (var line in lines)
+        {
+            string[] parts = line.Split(" (Time Added ");
+
+            JournalEntry entry = new JournalEntry();
+            entry._entry = parts[0];
+            entry._time = parts[1].TrimEnd(')');
+
+            _entries.Add(entry);
+
+            
+        }
+    }
 }
