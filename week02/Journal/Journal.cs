@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using System.Collections.Generic;
 
 // Stores a list of journal entries
@@ -40,6 +39,7 @@ public class Journal
                     writer.WriteLine(entry._prompt);
                     writer.WriteLine(entry._entry);
                     writer.WriteLine(entry._time);
+                    writer.WriteLine(entry._mood); // Save mood
                 }
             }
             Console.WriteLine("Journal saved to file.");
@@ -71,6 +71,7 @@ public class Journal
                     entry._prompt = reader.ReadLine();
                     entry._entry = reader.ReadLine();
                     entry._time = reader.ReadLine();
+                    entry._mood = reader.ReadLine(); // Load mood
                     _entries.Add(entry);
                 }
             }
@@ -79,6 +80,30 @@ public class Journal
         catch (Exception ex)
         {
             Console.WriteLine($"Error loading journal: {ex.Message}");
+        }
+    }
+
+    // Search for entries by keyword (prompt, entry, time, or mood)
+    public void SearchEntries(string keyword)
+    {
+        var results = _entries.FindAll(entry =>
+            entry._prompt.Contains(keyword, StringComparison.OrdinalIgnoreCase) ||
+            entry._entry.Contains(keyword, StringComparison.OrdinalIgnoreCase) ||
+            entry._time.Contains(keyword, StringComparison.OrdinalIgnoreCase) ||
+            entry._mood.Contains(keyword, StringComparison.OrdinalIgnoreCase)
+        );
+
+        if (results.Count == 0)
+        {
+            Console.WriteLine("No matching entries found.");
+        }
+        else
+        {
+            Console.WriteLine($"Found {results.Count} matching entries:");
+            foreach (var entry in results)
+            {
+                entry.DisplayEntry();
+            }
         }
     }
 }
