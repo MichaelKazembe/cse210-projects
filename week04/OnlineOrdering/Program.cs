@@ -17,11 +17,11 @@ class Program
         Order order2 = new Order(customer2);
 
         // Add products to orders
-        order1.AddProduct(new Product("Laptop", "Prod1", 999.99m, 1));
-        order1.AddProduct(new Product("Mouse", "Prod2", 29.99m, 2));
+        order1.AddProduct(new Product("Laptop", "Prod1", 2158.98m, 1));
+        order1.AddProduct(new Product("Mouse", "Prod2", 25.99m, 2));
 
-        order2.AddProduct(new Product("Monitor", "Prod3", 199.99m, 1));
-        order2.AddProduct(new Product("Keyboard", "Prod4", 49.99m, 3));
+        order2.AddProduct(new Product("Monitor", "Prod3", 149.97m, 1));
+        order2.AddProduct(new Product("Keyboard", "Prod4", 44.39m, 3));
 
         // Display order details
         Console.WriteLine("Order 1 Details:");
