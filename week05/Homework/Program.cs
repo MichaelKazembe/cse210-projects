@@ -4,15 +4,22 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Instantiate an object of the Assignment class
-
-        Assignment assignment1= new Assignment("Michael", "C#");
-        MathAssignment mathAssignment1 = new MathAssignment("Michael", "C#", "7.3", "8-19");
-
-        // Call the GetSummary method
+        // Instantiate objects
+        Assignment assignment1 = new Assignment("Michael", "Fractions");
+        MathAssignment mathAssignment1 = new MathAssignment("Michael", "Fractions", "7.3", "8-19");
+        WritingAssignment writingAssignment1 = new WritingAssignment("Myers", "European History", "The Causes of World War");
+        
+        // Display assignment summaries and details
+        Console.WriteLine("Assignment Summary:");
         Console.WriteLine(assignment1.GetSummary());
-
-        // Call the GetHomeworkList method
+        Console.WriteLine();
+        
+        Console.WriteLine("Math Assignment Homework List:");
         Console.WriteLine(mathAssignment1.GetHomeworkList());
+        Console.WriteLine();
+        
+        Console.WriteLine("Writing Assignment Information:");
+        Console.WriteLine(writingAssignment1.GetWritingInformation());
+        Console.WriteLine();
     }
 }

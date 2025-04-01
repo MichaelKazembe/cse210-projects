@@ -11,6 +11,16 @@ public class Assignment
     }
 
     // Getters
+    public string GetStudentName()
+    {
+        return _studentName;
+    }
+
+    public string GetTopic()
+    {
+        return _topic;
+    }
+
     public string GetSummary()
     {
         return $"{_studentName} submitted an assignment on {_topic}";
