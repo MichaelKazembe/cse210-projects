@@ -1,40 +1,54 @@
-public class ListingActivity : ListingActivity 
+using System;
+using System.Collections.Generic;
+
+public class ListingActivity : Activity
 {
     private int _count;
     private List<string> _prompts;
 
-    //  Constructor    
-    public ListingActivity( int count, List<string> prompts)
+    public ListingActivity(string name, string description, int duration, int count, List<string> prompts)
+        : base(name, description, duration)
     {
         _count = count;
         _prompts = prompts;
     }
 
-    // Getters
-    public int GetCount()
+    public override void Run()
     {
-        return _count;
+        DisplayStartingMessage();
+        ShowCountDown(3);
+
+        string prompt = GetRandomPrompt();
+        Console.WriteLine(prompt);
+        Console.WriteLine("You may begin in: ");
+        ShowCountDown(5);
+
+        List<string> items = GetListFromUser();
+
+        Console.WriteLine($"You listed {items.Count} items.");
+        DisplayEndingMessage();
     }
 
-    public List<string> GetPrompts()
+    private string GetRandomPrompt()
     {
-        return _prompts;
+        Random random = new Random();
+        int index = random.Next(_prompts.Count);
+        return _prompts[index];
     }
 
-    //  Methods
-    public void Run()
+    private List<string> GetListFromUser()
     {
-        Console.WriteLine("Running...");
-    }
+        List<string> items = new List<string>();
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(GetDuration());
 
-    public void GetRandomPrompt()
-    {
-        Console.WriteLine("Getting Random Prompt ...");
-    }
+        while (DateTime.Now < endTime)
+        {
+            Console.Write("Enter an item: ");
+            string item = Console.ReadLine();
+            items.Add(item);
+        }
 
-    public List<string> GetListFromUser()
-    {
-        Console.WriteLine("Getting List From User ...");
+        return items;
     }
-
 }

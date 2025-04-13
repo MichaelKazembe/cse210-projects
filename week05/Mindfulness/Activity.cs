@@ -1,19 +1,19 @@
-public class Activity 
+using System;
+using System.Threading;
+
+public abstract class Activity
 {
-   private string _name;
-   private string _description;
-   private int _duration;
+    private string _name;
+    private string _description;
+    private int _duration;
 
-    //  Constructor
-
-   public Activity (string name, string description, int duration)
+    public Activity(string name, string description, int duration)
     {
         _name = name;
         _description = description;
         _duration = duration;
     }
 
-    //  Getters  
     public string GetName()
     {
         return _name;
@@ -29,24 +29,42 @@ public class Activity
         return _duration;
     }
 
-    //  Methods
     public void DisplayStartingMessage()
     {
-        Console.WriteLine("Message");
+        Console.WriteLine($"Starting {_name}: {_description} for {_duration} seconds.");
+        Console.WriteLine("Prepare to begin...");
+        Logger.LogActivityStart(_name, _duration);
     }
 
     public void DisplayEndingMessage()
     {
-        Console.WriteLine("Message");
+        Console.WriteLine("Great job!");
+        Console.WriteLine($"You have completed the {_name}.");
+        Console.WriteLine($"Duration: {_duration} seconds.");
+        ShowSpinner(3);
+        Console.WriteLine("End of activity.");
+        Logger.LogActivityEnd(_name);
     }
 
-    public void ShowSpinner(int seconds)
+    public abstract void Run();
+
+    protected void ShowSpinner(int seconds)
     {
-        Console.WriteLine("Spinner...");
+        for (int i = 0; i < seconds; i++)
+        {
+            Console.Write(".");
+            Thread.Sleep(1000);
+        }
+        Console.WriteLine();
     }
 
-    public void ShowCountDown(int seconds)
+    protected void ShowCountDown(int seconds)
     {
-        Console.WriteLine("Counting down: 3 2 1");
+        for (int i = seconds; i > 0; i--)
+        {
+            Console.Write(i + " ");
+            Thread.Sleep(1000);
+        }
+        Console.WriteLine("Start!");
     }
 }

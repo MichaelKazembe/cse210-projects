@@ -1,44 +1,50 @@
+using System;
+using System.Collections.Generic;
+
 public class ReflectingActivity : Activity
 {
     private List<string> _prompts;
     private List<string> _questions;
 
-    // Constructor
-    public ReflectingActivity(List<string> prompts, List<string> questions)
+    public ReflectingActivity(string name, string description, int duration, List<string> prompts, List<string> questions)
+        : base(name, description, duration)
     {
         _prompts = prompts;
         _questions = questions;
     }
 
-    // Getters
-    public List<string> GetPrompts()
+    public override void Run()
     {
-        return _prompts;
+        DisplayStartingMessage();
+        ShowCountDown(3);
+
+        string prompt = GetRandomPrompt();
+        Console.WriteLine(prompt);
+
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(GetDuration());
+
+        while (DateTime.Now < endTime)
+        {
+            string question = GetRandomQuestion();
+            Console.WriteLine(question);
+            ShowSpinner(4);
+        }
+
+        DisplayEndingMessage();
     }
 
-    public List<string> GetQuestions()
+    private string GetRandomPrompt()
     {
-        return _questions;
+        Random random = new Random();
+        int index = random.Next(_prompts.Count);
+        return _prompts[index];
     }
 
-    //  Methods
-    public void Run()
+    private string GetRandomQuestion()
     {
-        Console.WriteLine("Running ...");
-    }
-
-    public string GetRandomQuestion()
-    {
-        Console.WriteLine("Getting Random Question ...");
-    }
-
-    public void DisplayPrompt()
-    {
-        Console.WriteLine("Prompt");
-    }
-
-    public DisplayQuestions()
-    {
-        Console.WriteLine("Questions");
+        Random random = new Random();
+        int index = random.Next(_questions.Count);
+        return _questions[index];
     }
 }
